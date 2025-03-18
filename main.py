@@ -8,14 +8,6 @@ print(df.head())
 df.drop(['PassengerId', 'Name'], axis=1, inplace=True)
 df.head()
 
-catСols = df.select_dtypes(include=['object']).columns
-
-labelEncoders = {}
-for col in catСols:
-    le = LabelEncoder()
-    df[col] = le.fit_transform(df[col])
-    labelEncoders[col] = le
-
 df['Transported'] = df['Transported'].astype(int)
 X = df.drop('Transported', axis=1)
 y = df['Transported']
